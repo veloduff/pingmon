@@ -12,7 +12,6 @@ import matplotlib.pyplot as plt
 
 progname = 'pingmon'
 
-
 def get_date_time(dayonly=False):
 
     if dayonly:

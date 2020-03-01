@@ -28,11 +28,10 @@ def open_file(fname):
     return open(os.path.join(os.path.dirname(__file__), fname))
 
 
-_version = "0.0.2"
+_version = "0.0.6"
 
-console_scripts = [ 'pingmon = pingmon:main',
+console_scripts = ['pingmon = pingmon.pingmon:main',
                     ]
-
 
 # read the contents of your README file
 this_directory = os.path.abspath(os.path.dirname(__file__))
@@ -41,6 +40,7 @@ with io.open(os.path.join(this_directory, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name='pingmon',
+    packages=['pingmon'],
     version=_version,
     python_requires='>=3',
     url='https://github.com/veloduff/pingmon',
@@ -55,8 +55,7 @@ setup(
     install_requires=[
         'matplotlib>=3.1.3',
     ],
-    packages=find_packages(),
-    keywords='aws cfn control cloudformation stack',
+    keywords='ping monitor',
     entry_points=dict(console_scripts=console_scripts),
     classifiers=[
         'Intended Audience :: Developers',
