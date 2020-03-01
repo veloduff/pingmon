@@ -17,9 +17,9 @@ This library is licensed under the Apache 2.0 License.
 pip install pingmon 
 ```
 
-## What it does
+## What it does (creates three files)
 
-```pingmon``` monitors a ping to a host or ip address, but running a ```ping -c <ip_or_hostname``` and capturing the results. Three files are created in the directory that ```pingmon``` is run from:
+```pingmon``` monitors a ping to a host or ip address, using ```ping -c <ip_or_hostname>``` and capturing the results. Three files are created in the directory that ```pingmon``` is run from:
 
 * ```ping.results.csv.<YYYYMMDD>``` :  CSV data that has date.time (YYYYMMDD.HHMMSS) and the time the ping took in ms.
 * ```ping.results.raw.<YYYYMMDD>``` :  The raw output with date.time and a list output from the ping command.
