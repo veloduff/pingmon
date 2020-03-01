@@ -23,7 +23,7 @@ pip install pingmon
 
 * ```ping.results.csv.<YYYYMMDD>``` :  CSV data that has date.time (YYYYMMDD.HHMMSS) and the time the ping took in ms.
 * ```ping.results.raw.<YYYYMMDD>``` :  The raw output with date.time and a list output from the ping command.
-* ```ping.results.csv.<YYYYMMDD>.png``` : A graph that is created when the day is over (23:59:59 is the last entry) that shows a plot of each ping for the entire day.
+* ```ping.results.csv.<YYYYMMDD>.png``` : A high resolution PNG graph that is created when the day is over (23:59:59 is the last entry) that shows a plot of each ping for the entire day.
 
 
 ### Examples of each file:
