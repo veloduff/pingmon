@@ -17,6 +17,12 @@ This library is licensed under the Apache 2.0 License.
 pip install pingmon 
 ```
 
+## Usage
+
+```
+pingmon <ip_or_hostname>
+```
+
 ## What it does (creates three files)
 
 ```pingmon``` monitors a ping to a host or ip address, using ```ping -c <ip_or_hostname>``` and capturing the results. Three files are created in the directory that ```pingmon``` is run from:
@@ -42,7 +48,7 @@ pip install pingmon
 20200229.170044,33.969
 ```
 
-**Raw file**
+**Raw file:**
 ```
 20200229.235949,['PING 8.8.8.8 (8.8.8.8): 56 data bytes', '64 bytes from 8.8.8.8: icmp_seq=0 ttl=54 time=17.110 ms', '', '--- 8.8.8.8 ping statistics ---', '1 packets transmitted, 1 packets received, 0.0% packet loss', 'round-trip min/avg/max/stddev = 17.110/17.110/17.110/0.000 ms', '']
 20200229.235950,['PING 8.8.8.8 (8.8.8.8): 56 data bytes', '64 bytes from 8.8.8.8: icmp_seq=0 ttl=54 time=21.047 ms', '', '--- 8.8.8.8 ping statistics ---', '1 packets transmitted, 1 packets received, 0.0% packet loss', 'round-trip min/avg/max/stddev = 21.047/21.047/21.047/0.000 ms', '']
@@ -56,7 +62,7 @@ pip install pingmon
 20200229.235959,['PING 8.8.8.8 (8.8.8.8): 56 data bytes', '64 bytes from 8.8.8.8: icmp_seq=0 ttl=54 time=22.552 ms', '', '--- 8.8.8.8 ping statistics ---', '1 packets transmitted, 1 packets received, 0.0% packet loss', 'round-trip min/avg/max/stddev = 22.552/22.552/22.552/0.000 ms', '']
 ```
 
-**Plot image from CSV file**
+**Plot image from CSV file:**
 
 ![Plot image](/_images/ping.results.csv.20200229.png)
 
