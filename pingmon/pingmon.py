@@ -66,7 +66,7 @@ def build_graph(csv_file, title, cr_file=True):
             y.append(float(row[1]))
     plt.figure(figsize=(20, 10), dpi=150)
     plt.plot_date(x, y, label='Ping results', linestyle='None', marker='.', linewidth=1, markersize=3)
-    plt.xlabel('Day of month and Time of day (MM HH:SS)')
+    plt.xlabel('Day of month and Time of day (MM HH:MM)')
     plt.ylabel('Ping time (latency)')
     plt.title(title)
     plt.legend()
