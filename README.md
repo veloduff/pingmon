@@ -12,6 +12,19 @@ This library is licensed under the Apache 2.0 License.
 * python => 3.7
 * matplotlib 
 
+If you are using linux, you will probably need to install **python3-tkinter** for the ```pinggraph``` command to display the plot (building the file will still work). It's required if you see the error ```matplotlib is currently using agg as background ... non-gui...```  
+
+Example install:
+
+```
+yum install python3-tkinter
+```
+
+## Tested on
+
+* MacOS
+* Amazon Linux 2
+
 ## Installation
 
 ```
@@ -22,6 +35,7 @@ pip install pingmon
 
 ```
 pingmon <ip_or_hostname>
+
 ```
 
 ## What it does (creates three files)
@@ -75,9 +89,9 @@ If you ran the ```pingmon``` command and want to see the graph from a CSV file, 
 pinggraph <csv_file>
 ```
 
-To create a PNG file, run this and the file is created in your current working directory:
+To create a PNG file, use **True** as the second postional argument, and the file is created in your current working directory:
 ```
-pinggraph <csv_file> True
+pinggraph <csv_file> True 
 ```
 
 

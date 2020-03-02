@@ -28,7 +28,7 @@ def open_file(fname):
     return open(os.path.join(os.path.dirname(__file__), fname))
 
 
-_version = "0.0.8"
+_version = "0.0.10"
 
 console_scripts = ['pingmon = pingmon.pingmon:main',
                    'pinggraph = pingmon.pinggraph:main',
