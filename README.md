@@ -67,4 +67,17 @@ pingmon <ip_or_hostname>
 
 ![Plot image](/_images/ping.results.csv.20200229.png)
 
+## Create the graph from an existing CSV file
+
+If you ran the ```pingmon``` command and want to see the graph from a CSV file, you can run ```pinggraph```. To display the graph with python run this:
+
+```
+pinggraph <csv_file>
+```
+
+To create a PNG file, run this and the file is created in your current working directory:
+```
+pinggraph <csv_file> True
+```
+
 

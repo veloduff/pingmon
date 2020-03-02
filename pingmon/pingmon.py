@@ -101,7 +101,8 @@ def main():
                 csv_file = open('ping.results.csv.{0}'.format(day_today), 'a')
                 raw_file.close()
                 raw_file = open('ping.results.raw.{0}'.format(day_today), 'a')
-                build_graph('ping.results.csv.{0}'.format(day_yesterday), 'Date: {0}'.format(day_yesterday))
+                build_graph('ping.results.csv.{0}'.format(day_yesterday),
+                            'Ping results for date: {0}'.format(day_yesterday))
             runtime = get_date_time()
             ping_data_all,ping_data_t = get_ping_data('1', host)
             print('{0}: {1}'.format(runtime, ping_data_t))
