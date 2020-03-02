@@ -28,25 +28,28 @@ def runcmd(cmd):
     return output
 
 
-def get_ping_data(count, ip):
+def get_ping_data(count, host):
     """
     Send one ping request and return terse (one-line) output
 
     :param count:
-    :param ip:
+    :param host:
     :return:
     """
 
     terse_info = None
-    cmd = "ping -c {0} {1}".format(count, ip)
+    packet_size = '56'  # will be 64 bytes, because of additional ICMP data bytes
+    cmd = "ping -c {0} -s {1} {2}".format(count, packet_size, host)
+
     cmd_o = runcmd(cmd)
+    # 20200302 [Changed - looking for miss, to looking for hit], removed this line:
+    #      l.startswith('PING', '--- ', 'round-trip', count + ' packets transmitted', 'rtt min/avg/max/mdev'):
     for l in cmd_o.decode().split('\n'):
-        if l.startswith(('PING', '--- ', 'round-trip', count + ' packets transmitted')):
-            pass
-        elif not l:
-            pass
-        else:
+        if l.startswith('64 bytes from {0}'.format(host)):
             terse_info = l
+            break
+        else:
+            pass
 
     return cmd_o.decode().split('\n'), terse_info
 
