@@ -9,6 +9,7 @@ This library is licensed under the Apache 2.0 License.
 
 ## Requires
 
+* python => 3.7
 * matplotlib 
 
 ## Installation

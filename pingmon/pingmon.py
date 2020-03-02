@@ -51,7 +51,7 @@ def get_ping_data(count, ip):
     return cmd_o.decode().split('\n'), terse_info
 
 
-def build_graph(csv_file, title):
+def build_graph(csv_file, title, cr_file=True):
 
     x = []
     y = []
@@ -64,13 +64,18 @@ def build_graph(csv_file, title):
             row[0] = datetime.strptime(row[0], '%Y%m%d.%H%M%S')
             x.append(row[0])
             y.append(float(row[1]))
-    plt.figure(figsize=(20,10), dpi=600)
+    plt.figure(figsize=(20, 10), dpi=150)
     plt.plot_date(x, y, label='Ping results', linestyle='None', marker='.', linewidth=1, markersize=3)
     plt.xlabel('Day of month and Time of day (MM HH:SS)')
     plt.ylabel('Ping time (latency)')
     plt.title(title)
     plt.legend()
-    plt.savefig('{0}.png'.format(csv_file), bbox_inches='tight', orientation='landscape')
+    plt.xticks(fontsize=8)
+    plt.yticks(fontsize=8)
+    if cr_file:
+        plt.savefig('{0}.png'.format(csv_file), dpi=150, bbox_inches='tight', orientation='landscape')
+    else:
+        plt.show()
 
 
 def main():

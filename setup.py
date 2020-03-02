@@ -31,6 +31,7 @@ def open_file(fname):
 _version = "0.0.6"
 
 console_scripts = ['pingmon = pingmon.pingmon:main',
+                   'pinggraph = pingmon.pinggraph:main',
                     ]
 
 # read the contents of your README file
