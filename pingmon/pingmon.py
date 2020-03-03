@@ -97,8 +97,8 @@ def main():
     plt.ylabel('Time of day')
 
     day_today = get_date_time(dayonly=True)
-    csv_file = open('ping.results.csv.{0}'.format(day_today), 'a')
-    raw_file = open('ping.results.raw.{0}'.format(day_today), 'a')
+    csv_file = open('ping.results.csv.{0}'.format(day_today), 'a', 1)
+    raw_file = open('ping.results.raw.{0}'.format(day_today), 'a', 1)
 
     try:
         while True:
@@ -109,9 +109,9 @@ def main():
                 day_yesterday = day_today
                 day_today = day_now
                 csv_file.close()
-                csv_file = open('ping.results.csv.{0}'.format(day_today), 'a')
+                csv_file = open('ping.results.csv.{0}'.format(day_today), 'a', 1)
                 raw_file.close()
-                raw_file = open('ping.results.raw.{0}'.format(day_today), 'a')
+                raw_file = open('ping.results.raw.{0}'.format(day_today), 'a', 1)
                 build_graph('ping.results.csv.{0}'.format(day_yesterday),
                             'Ping results for date: {0}'.format(day_yesterday))
             runtime = get_date_time()
