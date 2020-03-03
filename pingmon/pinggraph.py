@@ -12,28 +12,55 @@
 # License for the specific language governing permissions and limitations under the License.
 #
 
-import sys
+import sys, os
+import argparse
 import pingmon.pingmon as pingmon
+
+progname = 'pinggraph'
+
+
+def arg_parse():
+    parser = argparse.ArgumentParser(prog=progname,
+                                     description='Graph output from pingmon CSV file',
+                                     epilog='pinggraph -f CSV_FILE -c -d',
+                                     )
+    req_group = parser.add_argument_group('required arguments')
+
+    parser.add_argument('-c', '--create-file',
+                        dest='c_value',
+                        action='store_true',
+                        help='PNG file be created or displayed with Py'
+                        )
+
+    parser.add_argument('-d', '--full-day',
+                        dest='d_value',
+                        action='store_true',
+                        help="Show full Day on graph (00:00 to 23:59)"
+                        )
+
+    # required arguments
+    req_group.add_argument('-f',
+                           dest='f_value',
+                           metavar='CSV_FILE',
+                           help="CSV file to graph",
+                           required=True,
+                           type=str
+                           )
+
+    return parser.parse_args()
 
 
 def main():
 
-    if len(sys.argv) < 2:
-        print("USAGE:  pinggraph <csv_file> <opt: create file - True|False>")
-        exit(0)
+    args = arg_parse()
+    cr_file=args.c_value
+    full_day_graph=args.d_value
 
-    csv_file = sys.argv[1]
-    title = "Ping results from file  {0}".format(sys.argv[1])
-    cr_file = False
-
-    try:
-        if sys.argv[2]:
-            cr_file = sys.argv[2]
-    except IndexError:
-        pass
+    csv_file = args.f_value
+    title = "Ping results from file  {0}".format(csv_file)
 
     try:
-        pingmon.build_graph(csv_file, title, cr_file=cr_file)
+        pingmon.build_graph(csv_file, title, cr_file=cr_file, full_day_graph=full_day_graph)
     except Exception as e:
         raise ValueError(e)
 

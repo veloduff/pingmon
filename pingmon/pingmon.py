@@ -18,6 +18,7 @@ import time
 import subprocess
 from datetime import datetime
 import matplotlib.pyplot as plt
+from matplotlib import dates as mdates
 
 
 def get_date_time(dayonly=False):
@@ -62,7 +63,7 @@ def get_ping_data(count, host):
     return cmd_o.decode().split('\n'), terse_info
 
 
-def build_graph(csv_file, title, cr_file=True):
+def build_graph(csv_file, title, cr_file=True, full_day_graph=True):
 
     x = []
     y = []
@@ -76,10 +77,17 @@ def build_graph(csv_file, title, cr_file=True):
             x.append(row[0])
             y.append(float(row[1]))
     plt.figure(figsize=(20, 10), dpi=150)
+
+    if full_day_graph:
+        date_min = x[0].replace(hour=00, minute=00, second=00)
+        date_max = x[-1].replace(hour=23, minute=59, second=59)
+        plt.xlim(date_min, date_max)
     plt.plot_date(x, y, label='Ping results', linestyle='None', marker='.', linewidth=1, markersize=3)
     plt.xlabel('Day of month and Time of day (MM HH:MM)')
     plt.ylabel('Ping time (latency)')
     plt.title(title)
+    date_format = mdates.DateFormatter('%d %H:%M')
+    plt.gca().xaxis.set_major_formatter(date_format)
     plt.legend()
     plt.xticks(fontsize=8)
     plt.yticks(fontsize=8)
@@ -113,7 +121,9 @@ def main():
                 raw_file.close()
                 raw_file = open('ping.results.raw.{0}'.format(day_today), 'a', 1)
                 build_graph('ping.results.csv.{0}'.format(day_yesterday),
-                            'Ping results for date: {0}'.format(day_yesterday))
+                            'Ping results for date: {0}'.format(day_yesterday),
+                            cr_file=True,
+                            full_day_graph=False)
             runtime = get_date_time()
             ping_data_all,ping_data_t = get_ping_data('1', host)
             print('{0}: {1}'.format(runtime, ping_data_t))
