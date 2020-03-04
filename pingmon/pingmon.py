@@ -77,17 +77,25 @@ def build_graph(csv_file, title, cr_file=True, full_day_graph=True):
             x.append(row[0])
             y.append(float(row[1]))
     plt.figure(figsize=(20, 10), dpi=150)
-
     if full_day_graph:
         date_min = x[0].replace(hour=00, minute=00, second=00)
         date_max = x[-1].replace(hour=23, minute=59, second=59)
         plt.xlim(date_min, date_max)
-    plt.plot_date(x, y, label='Ping results', linestyle='None', marker='.', linewidth=1, markersize=3)
-    plt.xlabel('Day of month and Time of day (MM HH:MM)')
-    plt.ylabel('Ping time (latency)')
+    plt.plot_date(
+        x, y,
+        label='Ping results',
+        linestyle='None',
+        marker='.',
+        linewidth=1,
+        markersize=3
+    )
+    x_label_date_format = mdates.DateFormatter('%H:%M')
+    #plt.xlabel('Day of month and Time of day (HH:MM)')
+    plt.xlabel('Ping results for {0}\n(x label is time: HH:MM)'.format(x[0].strftime("%b %d %Y"))),
+    plt.ylabel('Ping time in ms (latency)')
     plt.title(title)
-    date_format = mdates.DateFormatter('%d %H:%M')
-    plt.gca().xaxis.set_major_formatter(date_format)
+    x_tick_date_format = mdates.DateFormatter('%H:%M')
+    plt.gca().xaxis.set_major_formatter(x_tick_date_format)
     plt.legend()
     plt.xticks(fontsize=8)
     plt.yticks(fontsize=8)
@@ -101,8 +109,6 @@ def main():
 
     host =  str(sys.argv[1])
 
-    plt.xlabel('Ping (latency)')
-    plt.ylabel('Time of day')
 
     day_today = get_date_time(dayonly=True)
     csv_file = open('ping.results.csv.{0}'.format(day_today), 'a', 1)
