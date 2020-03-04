@@ -123,7 +123,7 @@ def main():
                 build_graph('ping.results.csv.{0}'.format(day_yesterday),
                             'Ping results for date: {0}'.format(day_yesterday),
                             cr_file=True,
-                            full_day_graph=False)
+                            full_day_graph=True)
             runtime = get_date_time()
             ping_data_all,ping_data_t = get_ping_data('1', host)
             print('{0}: {1}'.format(runtime, ping_data_t))

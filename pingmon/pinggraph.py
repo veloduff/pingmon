@@ -29,7 +29,7 @@ def arg_parse():
     parser.add_argument('-c', '--create-file',
                         dest='c_value',
                         action='store_true',
-                        help='PNG file be created or displayed with Py'
+                        help='PNG file is created, instead of displayed '
                         )
 
     parser.add_argument('-d', '--full-day',

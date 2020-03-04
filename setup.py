@@ -19,6 +19,8 @@ pingmon
 # setup.py classifiers
 # https://pypi.python.org/pypi?%3Aaction=list_classifiers
 
+_version = "0.0.11"
+
 import os
 import io
 from setuptools import setup, find_packages
@@ -27,8 +29,6 @@ from setuptools import setup, find_packages
 def open_file(fname):
     return open(os.path.join(os.path.dirname(__file__), fname))
 
-
-_version = "0.0.10"
 
 console_scripts = ['pingmon = pingmon.pingmon:main',
                    'pinggraph = pingmon.pinggraph:main',

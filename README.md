@@ -14,7 +14,7 @@ This library is licensed under the Apache 2.0 License.
 
 If you are using linux, you will probably need to install **python3-tkinter** for the ```pinggraph``` command to display the plot (building the file will still work). It's required if you see the error ```matplotlib is currently using agg as background ... non-gui...```  
 
-Example install:
+Example *python3-tkinter* install:
 
 ```
 yum install python3-tkinter
@@ -36,15 +36,17 @@ pip install pingmon
 ```
 pingmon <ip_or_hostname>
 
+pinggraph -f CSV_FILE
+
 ```
 
 ## What it does (creates three files)
 
-```pingmon``` monitors a ping to a host or ip address, using ```ping -c <ip_or_hostname>``` and captures the results. Three files are created in the directory that ```pingmon``` is run from:
+```pingmon``` monitors a ping to a host or ip address, using ```ping -b 56 -c <ip_or_hostname>``` and captures the results. Three files are created in the directory that ```pingmon``` is run from:
 
 * ```ping.results.csv.<YYYYMMDD>``` :  CSV data that has date.time (YYYYMMDD.HHMMSS) and the time the ping took in ms.
 * ```ping.results.raw.<YYYYMMDD>``` :  The raw output with date.time and a list output from the ping command.
-* ```ping.results.csv.<YYYYMMDD>.png``` : A high resolution PNG graph that is created when the day is over (23:59:59 is the last entry) that shows a plot of each ping for the entire day.
+* ```ping.results.csv.<YYYYMMDD>.png``` : A high resolution PNG graph that is created when the day is over (23:59:59 is the last entry) that shows a plot of each ping recorded for the entire day.
 
 
 ### Examples of each file:
@@ -83,15 +85,21 @@ pingmon <ip_or_hostname>
 
 ## Create the graph from an existing CSV file
 
-If you ran the ```pingmon``` command and want to see the graph from a CSV file, you can run ```pinggraph```. To display the graph with python run this:
+If you ran the ```pingmon``` command and want to see the graph from a CSV file, you can run ```pinggraph```. To display the graph with python run this (does not save to a file):
 
 ```
-pinggraph <csv_file>
+pinggraph -f CSV_FILE 
 ```
 
-To create a PNG file, use **True** as the second postional argument, and the file is created in your current working directory:
+To create a PNG file, use **-c** flag, and the graph file is created in your current working directory:
 ```
-pinggraph <csv_file> True 
+pinggraph -f CSV_FILE -c
 ```
+
+To show a full day (00:00 to 23:59) on the graph, rather then just the first and last ping times recorded, use the **-d** flag:
+```
+pinggraph -f CSV_FILE -d
+```
+
 
 
