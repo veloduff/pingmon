@@ -46,9 +46,11 @@ def get_ping_data(count, host):
     :return:
     """
 
+    timeout = '1'
+
     terse_info = None
     packet_size = '56'  # will be 64 bytes, because of additional ICMP data bytes
-    cmd = "ping -c {0} -s {1} {2}".format(count, packet_size, host)
+    cmd = "ping -c {0} -s {1} -t {2} {3}".format(count, packet_size, timeout, host)
 
     cmd_o = runcmd(cmd)
     # 20200302 [Changed - looking for miss, to looking for hit], removed this line:
