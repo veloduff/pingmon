@@ -19,7 +19,7 @@ pingmon
 # setup.py classifiers
 # https://pypi.python.org/pypi?%3Aaction=list_classifiers
 
-_version = "0.0.13"
+_version = "0.0.14"
 
 import os
 import io
