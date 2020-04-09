@@ -55,6 +55,7 @@ setup(
     include_package_data=True,
     install_requires=[
         'matplotlib>=3.1.3',
+        'requests'
     ],
     keywords='ping monitor',
     entry_points=dict(console_scripts=console_scripts),
