@@ -18,30 +18,37 @@ import requests
 progname = 'getipgeo'
 
 _FIELDS = (
-    'city',
-    'country_name',
-    'region_name',
-    'postal_code',
-    'isp',
-    'host',
     'ip',
-    'rdns',
-    'asn',
+    'ip_decimal',
+    'country',
+    'country_iso',
+    'country_eu',
+    'region_name',
+    'region_code',
+    'metro_code',
+    'zip_code',
+    'city',
     'latitude',
     'longitude',
-    'metro_code',
-    'timezone',
-    'datetime'
-   )
+    'time_zone',
+    'asn',
+    'asn_org'
+)
 
+## user agent info (for later use)
+#   "user_agent": {
+#     "product": "curl",
+#     "version": "7.79.1",
+#     "raw_value": "curl/7.79.1"
+# 
 
 def main():
 
-    url = 'https://tools.keycdn.com/geo.json'
-    r = requests.post(url)
+    url = 'https://ifconfig.co/json'
+    r = requests.get(url)
 
     for f in _FIELDS:
-        print('  {0:>20}: {1}'.format(f, r.json()['data']['geo'][f]))
+        print('  {0:>20}: {1}'.format(f, r.json()[f]))
 
 
 if __name__ == "__main__":
