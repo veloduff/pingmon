@@ -87,9 +87,10 @@ def build_graph(csv_file, title, cr_file=True, full_day_graph=True):
         x, y,
         label='Ping results',
         linestyle='None',
-        marker='.',
+        #marker='.',
+        fmt='.',
         linewidth=1,
-        markersize=3
+        markersize=1
     )
     x_label_date_format = mdates.DateFormatter('%H:%M')
     #plt.xlabel('Day of month and Time of day (HH:MM)')
