@@ -112,7 +112,6 @@ def main():
 
     host =  str(sys.argv[1])
 
-
     day_today = get_date_time(dayonly=True)
     csv_file = open('ping.results.csv.{0}'.format(day_today), 'a', 1)
     raw_file = open('ping.results.raw.{0}'.format(day_today), 'a', 1)
