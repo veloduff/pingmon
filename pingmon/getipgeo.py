@@ -53,9 +53,10 @@ def main():
 
 if __name__ == "__main__":
     try:
-        sys.exit(main())
+        main()
     except KeyboardInterrupt:
         print('\nReceived Keyboard interrupt. Exiting...')
     except ValueError as e:
         print(e)
+    sys.exit(0)
 

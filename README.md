@@ -42,12 +42,11 @@ pinggraph -f CSV_FILE
 
 ## What it does (standard out and creates three files)
 
-```pingmon``` monitors a ping to a host or ip address, using ```ping -b 56 -c <ip_or_hostname>``` and captures the results. Three files are created in the directory that ```pingmon``` is run from:
+```pingmon``` monitors a ping to a host or ip address, using ```ping -b 56 -c <ip_or_hostname>``` and captures the results. Results go to stdout (by default, can be silenced) and three files are created in the directory that ```pingmon``` is run from:
 
-* ```ping.results.csv.<YYYYMMDD>``` :  CSV data that has date.time (YYYYMMDD.HHMMSS) and the time the ping took in ms.
+* ```ping.results.csv.<YYYYMMDD>``` :  CSV data that has date.time (YYYYMMDD.HHMMSS) and the how long the ping took in ms.
 * ```ping.results.raw.<YYYYMMDD>``` :  The raw output with date.time and a list output from the ping command.
 * ```ping.results.csv.<YYYYMMDD>.png``` : A high resolution PNG graph that is created when the day is over (23:59:59 is the last entry) that shows a plot of each ping recorded for the entire day.
-
 
 ### Examples of each file:
 
@@ -101,5 +100,8 @@ To show a full day (00:00 to 23:59) on the graph, rather then just the first and
 pinggraph -f CSV_FILE -d
 ```
 
+## Optional utilities
+
+* `ping-wd.sh` is a shell script that can be run from cron, that checks the internet (with ping) and will reboot the system from which it is run from. 
 
 

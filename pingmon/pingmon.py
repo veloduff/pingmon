@@ -88,5 +88,6 @@ if __name__ == "__main__":
         print('\nReceived Keyboard interrupt. Exiting...')
     except ValueError as e:
         print(e)
+    sys.exit(0)
 
 

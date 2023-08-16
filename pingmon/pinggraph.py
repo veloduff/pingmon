@@ -75,4 +75,5 @@ if __name__ == "__main__":
         sys.exit(0)
     except ValueError as e:
         print(e)
+    sys.exit(0)
 
