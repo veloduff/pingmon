@@ -81,7 +81,7 @@ pinggraph -f CSV_FILE
 
 **Plot image from CSV file:**
 
-![Plot image](_images/ping.results.csv.20200229.png)
+![Plot image](https://raw.githubusercontent.com/veloduff/pingmon/master/_images/ping.results.csv.20200229.png)
 
 ## Create the graph from an existing CSV file
 
