@@ -15,7 +15,7 @@
 import sys
 import time
 import argparse
-from .pingmonClass import PingMonitor
+from .pmonClass import PingMonitor
 
 
 def main():
