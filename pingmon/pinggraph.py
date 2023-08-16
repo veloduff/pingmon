@@ -14,7 +14,7 @@
 
 import sys, os
 import argparse
-import pingmon.pingmon as pingmon
+from .pingmonClass import PingMonitor
 
 progname = 'pinggraph'
 
@@ -52,6 +52,8 @@ def arg_parse():
 
 def main():
 
+    pmon = PingMonitor()
+
     args = arg_parse()
     cr_file=args.c_value
     full_day_graph=args.d_value
@@ -60,16 +62,17 @@ def main():
     title = "Ping results from file  {0}".format(csv_file)
 
     try:
-        pingmon.build_graph(csv_file, title, cr_file=cr_file, full_day_graph=full_day_graph)
+        pmon.build_graph(csv_file, title, cr_file=cr_file, full_day_graph=full_day_graph)
     except Exception as e:
         raise ValueError(e)
 
 
 if __name__ == "__main__":
     try:
-        sys.exit(main())
+        main()
     except KeyboardInterrupt:
         print('\nReceived Keyboard interrupt. Exiting...')
+        sys.exit(0)
     except ValueError as e:
         print(e)
 
