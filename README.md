@@ -34,13 +34,13 @@ pip install pingmon
 ## Usage
 
 ```
-pingmon <ip_or_hostname>
+pingmon -i <ip/hostname> [-q]
 
 pinggraph -f CSV_FILE
 
 ```
 
-## What it does (creates three files)
+## What it does (standard out and creates three files)
 
 ```pingmon``` monitors a ping to a host or ip address, using ```ping -b 56 -c <ip_or_hostname>``` and captures the results. Three files are created in the directory that ```pingmon``` is run from:
 
@@ -81,7 +81,7 @@ pinggraph -f CSV_FILE
 
 **Plot image from CSV file:**
 
-![Plot image](/_images/ping.results.csv.20200229.png)
+![Plot image](_images/ping.results.csv.20200229.png)
 
 ## Create the graph from an existing CSV file
 
