@@ -12,6 +12,7 @@
 #
 
 import csv
+import sys
 import subprocess
 from datetime import datetime
 import matplotlib.pyplot as plt
@@ -32,10 +33,15 @@ class PingMonitor:
 
 
     def runcmd(self, cmd):
-        output = subprocess.Popen(cmd,
-                                  stdout=subprocess.PIPE,
-                                  stderr=subprocess.STDOUT,
-                                  shell=True).communicate()[0]
+        try:
+            output = subprocess.Popen(cmd, 
+                                      stdout=subprocess.PIPE,
+                                      stderr=subprocess.STDOUT,
+                                      shell=True).communicate()[0]
+        except KeyboardInterrupt:
+            print('\nReceived Keyboard interrupt. Exiting...')
+            sys.exit(0)
+
         return output
 
 

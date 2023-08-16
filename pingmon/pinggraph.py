@@ -14,7 +14,7 @@
 
 import sys, os
 import argparse
-from .pingmonClass import PingMonitor
+from .pmonClass import PingMonitor
 
 progname = 'pinggraph'
 
